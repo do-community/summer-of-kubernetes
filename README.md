@@ -1,7 +1,7 @@
-# DigitalOcean Summer of Kubernetes 
+# DigitalOcean Summer of Kubernetes Session 
 ## Observability: Configuring Prometheus and Grafana on DigitalOcean Managed Kubernetes
 
-### Learning Objectives
+### Learning Objectives 
 _By the end of this session, you will:_  
 1. Create and connect to a DigitalOcean Managed Kubernetes cluster 
 1. Install the latest version of the kube-prometheus-stack
@@ -11,7 +11,7 @@ _By the end of this session, you will:_
 1. Describe how Prometheus and Grafana work together in a Kubernetes Cluster
 1. Explain at least three benefits of being able to observe components in your Kubernetes Cluster
 
-
+### Step-by-Step Instructions 
 #### 1. Create and connect to a DigitalOcean Managed Kubernetes cluster 
 ##### Login to your DigitalOcean account using `doctl`
 
@@ -30,7 +30,7 @@ Copy and paste the following command:
 ```bash
 doctl kubernetes cluster create summer-of-k8s \
 --auto-upgrade=false \
---node-pool "name=node;size=s-4vcpu-8gb;count=3;tag=cluster2;label=type=basic;auto-scale=true;min-nodes=2;max-nodes=4" \
+--node-pool "name=node;size=s-4vcpu-8gb;count=3;tag=cluster2;label=type=basic;auto-scale=true;min-nodes=3;max-nodes=4" \
 --region sfo3
 ``` 
 
@@ -39,9 +39,8 @@ A couple of things to note:
 ```bash
 doctl kubernetes options regions
 ```
-...and replace your region after the `--region` flag (for example, `--region blr1` will spin up droplets in DigitalOcean's Bangalore data center)
-* If you'd prefer, you can create a Kubernetes cluster through the DigitalOcean Cloud Console
-~!@#$$%^%% (find the quickstart video showing this)
+...and put your preferred region after the `--region` flag (for example, `--region blr1` will spin up droplets in DigitalOcean's Bangalore data center)
+* If you'd like to skip the command line setup, you can [create a Kubernetes cluster through the DigitalOcean Cloud Console](https://www.youtube.com/watch?v=k50reywjO5U&list=PLseEp7p6EwibbSz6yvFFrvBJo6L7X_rVj&index=2). 
 
 #### 2. Install the latest version of the kube-prometheus-stack
 
@@ -55,28 +54,51 @@ doctl kubernetes cluster list
 doctl kubernetes 1-click install <your_cluster_id> --1-clicks monitoring
 ```
 
-##### Check that the installation if complete by looking for `Running` pods in the `kube-prometheus-stack` namespace
+##### Check that the installation if complete by looking for the pods in the `kube-prometheus-stack` namespace
 ```bash
 kubectl -n kube-prometheus-stack get pods
 ```
+When all pods are reporting a status of `Running`, go on to the next step. 
 
 #### 3. Login and look around the Grafana Dashboard 
 
-Follow the instructions for how to start and login to the Grafana Dashboard at the [DigitalOcean's Kubernetes Monitoring Stack Documentation](https://marketplace.digitalocean.com/apps/kubernetes-monitoring-stack)
+Follow the instructions for how to start and login to the Grafana Dashboard by working through the 
 
+[DigitalOcean Kubernetes Monitoring Stack Documentation](https://marketplace.digitalocean.com/apps/kubernetes-monitoring-stack)
+
+You can stop after completing the steps under the heading **Grafana**. 
+
+Click on the magnifiying glass icon to find pre-made Kubernetes dashboards. 
 
 #### 4. ​​Install the Ambassador Edge Stack 
+#### Install the Edge Stack with Helm
+Install the Edge Stack using Ambassador Labs's [Helm 3 instructions](https://www.getambassador.io/docs/edge-stack/latest/tutorials/getting-started/#1-installation).  
 
-Install the Ambassador Edge Stack using the [Helm 3 instructions](https://www.getambassador.io/docs/edge-stack/latest/tutorials/getting-started/).  
+Note: You may see some CRD and webhook warnings during installation. If you are using Kubernetes versions 1.16 - 1.21, you will be fine. 
 
-Note: getting some CRD webhook errors during installation. Be wary if using kube 1.22. 1.21 will be okay 
+Look at what you've installed inspecting the `ambassador` namespace
+```bash
+kubectl -n ambassador get all
+```
+
+Go to the Ambassador Edge Stak Dashboard by finding the external-ip of the ambassador service, copying it and pasting it in your browser. 
+
+##### Setup the Quote of the Moment Service
+Follow the instructions under the header 
+
+[Routing traffic from the edge](https://www.getambassador.io/docs/edge-stack/latest/tutorials/getting-started/#1-installation)
 
 #### 5. Setup a custom Grafana Dashboard to show data from the Ambassador Edge Stack
 https://www.getambassador.io/docs/edge-stack/latest/howtos/prometheus/
 
 
-
-https://grafana.com/grafana/dashboards/13758
+##### Import the Ambassador Edge Stack Grafana Dashboard
+* Visit the [Ambassador Labs Grafana Dashboard](https://grafana.com/grafana/dashboards/13758)
+* Copy the dashboard ID 
+* Login to Grafana
+* Find the Plus Sign Icon, and go to `Import`
+* Enter the dashboard ID and click 'Load'
+* Go see the dashboard! 
 
 #### 6. Describe how Prometheus and Grafana work together in a Kubernetes Cluster
 

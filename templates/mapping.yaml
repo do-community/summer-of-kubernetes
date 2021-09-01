@@ -1,0 +1,9 @@
+---
+apiVersion: getambassador.io/v2
+kind: Mapping
+metadata:
+  name: metrics
+spec:
+  prefix: /metrics
+  rewrite: ""
+  service: localhost:8877
