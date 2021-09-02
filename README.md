@@ -71,12 +71,12 @@ _By the end of this session, you will:_
         ```bash
         kubectl -n ambassador get all
         ```
-    * Go to the Ambassador Edge Stack Dashboard by finding the external-ip of the ambassador service, copying it and pasting it in your browser. Say hi to the penguin. 
+    * Go to the Ambassador Edge Stack Dashboard by finding the external-ip of the ambassador service, copying it and pasting it in your browser. Say hi to [Edgy the Blackbird](https://www.getambassador.io/about-us/history-of-edgy/). 
 
 #### 5. Setup a custom Grafana Dashboard to show data from the Ambassador Edge Stack
 * Setup a Mapping and ServiceMonitor so Prometheus can scrape metrics for the AES 
     ```bash
-       kubectl apply -f templates/mapping.yaml && \ 
+       kubectl apply -f templates/mapping.yaml && \
        kubectl apply -f templates/service-monitor.yaml
     ```
 *  Import the Ambassador Edge Stack Grafana Dashboard
