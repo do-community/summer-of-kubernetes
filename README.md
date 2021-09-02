@@ -74,15 +74,15 @@ _By the end of this session, you will:_
     * Go to the Ambassador Edge Stack Dashboard by finding the external-ip of the ambassador service, copying it and pasting it in your browser. Say hi to [Edgy the Blackbird](https://www.getambassador.io/about-us/history-of-edgy/). 
 
 #### 5. Setup a custom Grafana Dashboard to show data from the Ambassador Edge Stack
-* Setup a Mapping and ServiceMonitor so Prometheus can scrape metrics for the AES 
+* Install a Mapping and ServiceMonitor so Prometheus can scrape metrics for the AES 
     ```bash
        kubectl apply -f templates/mapping.yaml && \
        kubectl apply -f templates/service-monitor.yaml
     ```
 *  Import the Ambassador Edge Stack Grafana Dashboard
-    * Visit the [Ambassador Labs Grafana Dashboard](https://grafana.com/grafana/dashboards/13758)
+    * Visit the [Ambassador Labs Grafana AES Dashboard](https://grafana.com/grafana/dashboards/13758)
     * Copy the dashboard ID 
-    * Login to Grafana
+    * Return to Grafana
     * Find the Plus Sign Icon, and go to `Import`
     * Enter the dashboard ID (`13758`) and click 'Load'
     * Explore the dashboard! 
@@ -92,4 +92,4 @@ _By the end of this session, you will:_
 ](https://www.sumologic.com/blog/prometheus-vs-grafana/) and then answer the question "How do Prometheus and Grafana work together in a Kubernetes Cluster?" 
 
 #### 7. Explain at least three benefits of being able to observe components in your Kubernetes Cluster
-* Watch Jason Yee's video [What is Observability?](https://www.youtube.com/watch?v=orsxOxQNzDQ), and do your own research as needed to be able to explain at least three benefits of being able to observe components in your Kubernetes Cluster. 
+* Watch Jason Yee's video [What is Observability?](https://www.youtube.com/watch?v=orsxOxQNzDQ) (and do your own research as needed) to be able to explain at least three benefits of being able to observe components in your Kubernetes Cluster. 
