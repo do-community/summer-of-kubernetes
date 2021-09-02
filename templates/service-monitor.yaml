@@ -1,16 +1,18 @@
----
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: ambassador-monitor
+  namespace: kube-prometheus-stack
   labels:
-    app: ambassador
+    release: kube-prometheus-stack
 spec:
   namespaceSelector:
     matchNames:
-    - ambassador
+    - ambassador 
   selector:
     matchLabels:
       service: ambassador-admin
   endpoints:
   - port: ambassador-admin
+    path: /metrics
+    scheme: http
