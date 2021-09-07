@@ -75,7 +75,7 @@ _By the end of this session, you will:_
         ```bash
         kubectl -n ambassador get svc
         ```
-        * Copy the external ip address, and paste it in your browser. Say hi to [Edgy the Blackbird](https://www.getambassador.io/about-us/history-of-edgy/) and explore the dashboard. 
+    * Copy the external ip address, and paste it in your browser. Say hi to [Edgy the Blackbird](https://www.getambassador.io/about-us/history-of-edgy/) and explore the dashboard. 
 
 #### 5. Setup a custom Grafana Dashboard to show data from the Ambassador Edge Stack
 * Install a Mapping and ServiceMonitor so Prometheus can scrape metrics for the AES 
