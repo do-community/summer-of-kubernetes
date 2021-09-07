@@ -71,7 +71,11 @@ _By the end of this session, you will:_
         ```bash
         kubectl -n ambassador get all
         ```
-    * Go to the Ambassador Edge Stack Dashboard by finding the external-ip of the ambassador service, copying it and pasting it in your browser. Say hi to [Edgy the Blackbird](https://www.getambassador.io/about-us/history-of-edgy/). 
+    * Go to the Ambassador Edge Stack Dashboard by finding the external-ip of the ambassador service.
+        ```bash
+        kubectl -n ambassador get svc
+        ```
+        * Copy the external ip address, and paste it in your browser. Say hi to [Edgy the Blackbird](https://www.getambassador.io/about-us/history-of-edgy/) and explore the dashboard. 
 
 #### 5. Setup a custom Grafana Dashboard to show data from the Ambassador Edge Stack
 * Install a Mapping and ServiceMonitor so Prometheus can scrape metrics for the AES 
@@ -93,3 +97,17 @@ _By the end of this session, you will:_
 
 #### 7. Explain at least three benefits of being able to observe components in your Kubernetes Cluster
 * Watch Jason Yee's video [What is Observability?](https://www.youtube.com/watch?v=orsxOxQNzDQ) (and do your own research as needed) to be able to explain at least three benefits of being able to observe components in your Kubernetes Cluster. 
+
+#### 8. Delete your cluster 
+* Find your DOKS cluster id 
+    ```bash
+    doctl kubernetes cluster list
+    ```
+* Delete your cluster
+    ```bash
+    doctl kubernetes cluster delete <your_cluster_id>
+    ```
+* When you see the confirmation question, choose `y`.  
+    ```bash 
+    Warning: Are you sure you want to delete this Kubernetes cluster? (y/N) ?
+    ```
