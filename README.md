@@ -105,7 +105,7 @@ _By the end of this session, you will:_
     ```
 * Delete your cluster
     ```bash
-    doctl kubernetes cluster delete <your_cluster_id>
+    doctl kubernetes cluster delete --dangerous <your_cluster_id>
     ```
 * When you see the confirmation question, choose `y`.  
     ```bash 
